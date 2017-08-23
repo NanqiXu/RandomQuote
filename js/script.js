@@ -3,38 +3,38 @@ var quotes = [
   {
     quote: 'Don\'t cry because it\'s over, smile because it happened. ',
     source: "Dr. Seuss",
-    citation:"unknown",
-    year:"unknown"
+    citation:"",
+    year: ''
   },
   {
     quote: 'Be yourself; everyone else is already taken.',
     source: "Oscar Wilde",
-    citation:"unknown",
-    year:"unknown"
+    citation:"",
+    year: ''
   },
   {
     quote: "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.",
     source: "Albert Einstein",
-    citation:"unknown",
-    year:"unknown"
+    citation:"",
+    year: ''
   },
   {
     quote: "So many books, so little time.",
     source: "Frank Zappa",
-    citation:"unknown",
-    year:"unknown"
+    citation:"",
+    year: ''
   },
   {
     quote: "Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind.",
     source: "Bernard M. Baruch",
-    citation:"unknown",
-    year:"unknown"
+    citation:"",
+    year: ''
   },
   {
     quote: "You only live once, but if you do it right, once is enough.",
     source: "Mae West",
-    citation:"unknown",
-    year:"unknown"
+    citation:"",
+    year: ''
   }
 ]
 
@@ -45,15 +45,21 @@ function randomNum(max){
 
 //function return a randomQuote from quotes array
 function getRandomQuote(){
-  return quotes[randomNum(quotes.length-1)];
+  return quotes[randomNum(quotes.length)];
 }
 
 //function that prints selected quotes to the browser
 function printQuote(){
-  var selectedQuotes = getRandomQuote();
-  var quotesString = '<p class = "quote">' + selectedQuotes.quote + '</p>';
-  quotesString += '<p class = "source">' + selectedQuotes.source + '<span class="citation">' + selectedQuotes.citation +
-  '</span><span class="year">' + selectedQuotes.year + '</span></p>';
+  var selectedQuote = getRandomQuote();
+  var quotesString = '<p class = "quote">' + selectedQuote.quote + '</p>';
+  quotesString += '<p class = "source">' + selectedQuote.source;
+  if(selectedQuote.citation !== '' && selectedQuote.citation !== undefined){
+    quotesString += '<span class="citation">' + selectedQuote.citation + '</span>'
+  }
+  if(selectedQuote.year !== '' && selectedQuote.year !== undefined ){
+    quotesString += '<span class="year">' + selectedQuote.year + '</span>'
+  }
+  quotesString += '</p>';
   document.getElementById('quote-box').innerHTML = quotesString;
 }
 
